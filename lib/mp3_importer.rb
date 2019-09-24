@@ -1,6 +1,17 @@
-def import
-  imported_files = self.files
-  imported_files.each do |file|
-    new_song = Song.new_by_filename(file)
+class MP3Importer
+
+  attr_accessor :path
+
+  def initialize(path)
+    @path = path
   end
+
+  def files
+    dir_files =Dir[path + "/*.mp3"]
+    mp3_files = []
+    dir_files.each do |file|
+      mp3_files << file.split("/").last
+    end
+    mp3_files
+  
 end
